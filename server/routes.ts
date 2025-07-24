@@ -7,8 +7,8 @@ import { storage } from "./storage";
 export async function registerRoutes(app: Express): Promise<Server> {
   // Resume view endpoint - serves PDF for inline viewing
   app.get("/api/resume/view", (req, res) => {
-    const resumePath = path.resolve(import.meta.dirname, "public", "resume.pdf");
-    
+   const resumePath = path.resolve(process.cwd(), "server", "public", "resume.pdf");
+
     console.log('Resume path:', resumePath);
     
     res.setHeader('Content-Type', 'application/pdf');
