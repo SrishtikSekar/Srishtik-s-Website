@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { 
+  Download, 
   Mail, 
   Phone, 
   Github, 
@@ -53,6 +54,15 @@ export default function Home() {
     setMobileMenuOpen(false);
   };
 
+  const downloadResume = () => {
+    const link = document.createElement('a');
+    link.href = '/api/resume/download';
+    link.download = 'G_Srishtik_Sekar_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const downloadProject = () => {
     const link = document.createElement('a');
     link.href = '/api/project/download';
@@ -80,10 +90,16 @@ export default function Home() {
                 <button onClick={() => scrollToSection('projects')} className="text-navy-300 hover:text-primary transition-colors duration-300">Projects</button>
                 <button onClick={() => scrollToSection('skills')} className="text-navy-300 hover:text-primary transition-colors duration-300">Skills</button>
                 <button onClick={() => scrollToSection('contact')} className="text-navy-300 hover:text-primary transition-colors duration-300">Contact</button>
-                <Button onClick={downloadProject} className="bg-primary hover:bg-primary/90 text-white">
-                  <Archive className="w-4 h-4 mr-2" />
-                  Download Project
-                </Button>
+                <div className="flex space-x-4">
+                  <Button onClick={downloadResume} className="bg-primary hover:bg-primary/90 text-white">
+                    <Download className="w-4 h-4 mr-2" />
+                    Resume
+                  </Button>
+                  <Button onClick={downloadProject} variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">
+                    <Archive className="w-4 h-4 mr-2" />
+                    Project Files
+                  </Button>
+                </div>
               </div>
             </div>
 
@@ -115,10 +131,16 @@ export default function Home() {
               <button onClick={() => scrollToSection('projects')} className="block px-3 py-2 text-navy-300 hover:text-primary w-full text-left">Projects</button>
               <button onClick={() => scrollToSection('skills')} className="block px-3 py-2 text-navy-300 hover:text-primary w-full text-left">Skills</button>
               <button onClick={() => scrollToSection('contact')} className="block px-3 py-2 text-navy-300 hover:text-primary w-full text-left">Contact</button>
-              <Button onClick={downloadProject} className="block px-3 py-2 bg-primary text-white rounded-lg mt-2 w-full">
-                <Archive className="w-4 h-4 mr-2" />
-                Download Project
-              </Button>
+              <div className="space-y-2">
+                <Button onClick={downloadResume} className="block px-3 py-2 bg-primary text-white rounded-lg w-full">
+                  <Download className="w-4 h-4 mr-2" />
+                  Resume
+                </Button>
+                <Button onClick={downloadProject} variant="outline" className="block px-3 py-2 border-primary text-primary rounded-lg w-full">
+                  <Archive className="w-4 h-4 mr-2" />
+                  Project Files
+                </Button>
+              </div>
             </div>
           </motion.div>
         )}
@@ -150,7 +172,11 @@ export default function Home() {
             </motion.p>
             
             <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button onClick={downloadProject} size="lg" className="bg-primary hover:bg-primary/90 text-white transform hover:scale-105 transition-all duration-300">
+              <Button onClick={downloadResume} size="lg" className="bg-primary hover:bg-primary/90 text-white transform hover:scale-105 transition-all duration-300">
+                <Download className="w-5 h-5 mr-2" />
+                Download Resume
+              </Button>
+              <Button onClick={downloadProject} size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white transform hover:scale-105 transition-all duration-300">
                 <Archive className="w-5 h-5 mr-2" />
                 Download Project
               </Button>
@@ -575,7 +601,43 @@ export default function Home() {
         </div>
       </motion.section>
 
-
+      {/* Resume Download Section */}
+      <motion.section 
+        id="resume" 
+        className="py-16 px-4 sm:px-6 lg:px-8 bg-navy-800/50"
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={staggerChildren}
+      >
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-bold mb-8">
+            <span className="text-primary">Download</span> Resume
+          </motion.h2>
+          <motion.p variants={fadeInUp} className="text-xl text-navy-300 mb-8">
+            Get a detailed overview of my experience, skills, and achievements.
+          </motion.p>
+          
+          <motion.div variants={fadeInUp}>
+            <Card className="bg-navy-800 border-navy-700 max-w-md mx-auto">
+              <CardContent className="p-8 text-center">
+                <FileText className="text-primary text-4xl mb-4 mx-auto" />
+                <h3 className="text-lg font-semibold text-navy-200">G Srishtik Sekar Resume</h3>
+                <p className="text-navy-400 text-sm mb-6">PDF Format • Updated 2025</p>
+                
+                <Button 
+                  onClick={downloadResume} 
+                  className="w-full bg-primary hover:bg-primary/90 text-white transform hover:scale-105 transition-all duration-300"
+                  size="lg"
+                >
+                  <Download className="w-5 h-5 mr-2" />
+                  Download Resume
+                </Button>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
+      </motion.section>
 
       {/* Footer */}
       <footer className="py-8 px-4 sm:px-6 lg:px-8 border-t border-navy-800">
