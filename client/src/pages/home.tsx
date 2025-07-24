@@ -22,7 +22,8 @@ import {
   Users,
   Menu,
   X,
-  Archive
+  Archive,
+  Eye
 } from "lucide-react";
 
 const fadeInUp = {
@@ -54,13 +55,8 @@ export default function Home() {
     setMobileMenuOpen(false);
   };
 
-  const downloadResume = () => {
-    const link = document.createElement('a');
-    link.href = '/api/resume/download';
-    link.download = 'G_Srishtik_Sekar_Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const viewResume = () => {
+    window.open('/api/resume/view', '_blank');
   };
 
   const downloadProject = () => {
@@ -91,9 +87,9 @@ export default function Home() {
                 <button onClick={() => scrollToSection('skills')} className="text-navy-300 hover:text-primary transition-colors duration-300">Skills</button>
                 <button onClick={() => scrollToSection('contact')} className="text-navy-300 hover:text-primary transition-colors duration-300">Contact</button>
                 <div className="flex space-x-4">
-                  <Button onClick={downloadResume} className="bg-primary hover:bg-primary/90 text-white">
-                    <Download className="w-4 h-4 mr-2" />
-                    Resume
+                  <Button onClick={viewResume} className="bg-primary hover:bg-primary/90 text-white">
+                    <Eye className="w-4 h-4 mr-2" />
+                    View Resume
                   </Button>
                   <Button onClick={downloadProject} variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">
                     <Archive className="w-4 h-4 mr-2" />
@@ -132,9 +128,9 @@ export default function Home() {
               <button onClick={() => scrollToSection('skills')} className="block px-3 py-2 text-navy-300 hover:text-primary w-full text-left">Skills</button>
               <button onClick={() => scrollToSection('contact')} className="block px-3 py-2 text-navy-300 hover:text-primary w-full text-left">Contact</button>
               <div className="space-y-2">
-                <Button onClick={downloadResume} className="block px-3 py-2 bg-primary text-white rounded-lg w-full">
-                  <Download className="w-4 h-4 mr-2" />
-                  Resume
+                <Button onClick={viewResume} className="block px-3 py-2 bg-primary text-white rounded-lg w-full">
+                  <Eye className="w-4 h-4 mr-2" />
+                  View Resume
                 </Button>
                 <Button onClick={downloadProject} variant="outline" className="block px-3 py-2 border-primary text-primary rounded-lg w-full">
                   <Archive className="w-4 h-4 mr-2" />
@@ -172,9 +168,9 @@ export default function Home() {
             </motion.p>
             
             <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button onClick={downloadResume} size="lg" className="bg-primary hover:bg-primary/90 text-white transform hover:scale-105 transition-all duration-300">
-                <Download className="w-5 h-5 mr-2" />
-                Download Resume
+              <Button onClick={viewResume} size="lg" className="bg-primary hover:bg-primary/90 text-white transform hover:scale-105 transition-all duration-300">
+                <Eye className="w-5 h-5 mr-2" />
+                View Resume
               </Button>
               <Button onClick={downloadProject} size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white transform hover:scale-105 transition-all duration-300">
                 <Archive className="w-5 h-5 mr-2" />
@@ -601,7 +597,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* Resume Download Section */}
+      {/* Resume View Section */}
       <motion.section 
         id="resume" 
         className="py-16 px-4 sm:px-6 lg:px-8 bg-navy-800/50"
@@ -612,10 +608,10 @@ export default function Home() {
       >
         <div className="max-w-4xl mx-auto text-center">
           <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl font-bold mb-8">
-            <span className="text-primary">Download</span> Resume
+            <span className="text-primary">View</span> Resume
           </motion.h2>
           <motion.p variants={fadeInUp} className="text-xl text-navy-300 mb-8">
-            Get a detailed overview of my experience, skills, and achievements.
+            View a detailed overview of my experience, skills, and achievements.
           </motion.p>
           
           <motion.div variants={fadeInUp}>
@@ -626,12 +622,12 @@ export default function Home() {
                 <p className="text-navy-400 text-sm mb-6">PDF Format • Updated 2025</p>
                 
                 <Button 
-                  onClick={downloadResume} 
+                  onClick={viewResume} 
                   className="w-full bg-primary hover:bg-primary/90 text-white transform hover:scale-105 transition-all duration-300"
                   size="lg"
                 >
-                  <Download className="w-5 h-5 mr-2" />
-                  Download Resume
+                  <Eye className="w-5 h-5 mr-2" />
+                  View Resume
                 </Button>
               </CardContent>
             </Card>

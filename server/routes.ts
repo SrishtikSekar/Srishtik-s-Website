@@ -5,12 +5,15 @@ import archiver from "archiver";
 import { storage } from "./storage";
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Resume download endpoint
-  app.get("/api/resume/download", (req, res) => {
-    const resumePath = path.join(import.meta.dirname, "public", "resume.pdf");
+  // Resume view endpoint - serves PDF for inline viewing
+  app.get("/api/resume/view", (req, res) => {
+    const resumePath = path.resolve(import.meta.dirname, "public", "resume.pdf");
+    
+    console.log('Resume path:', resumePath);
     
     res.setHeader('Content-Type', 'application/pdf');
-    res.setHeader('Content-Disposition', 'attachment; filename="G_Srishtik_Sekar_Resume.pdf"');
+    res.setHeader('Content-Disposition', 'inline; filename="G_Srishtik_Sekar_Resume.pdf"');
+    res.setHeader('Cache-Control', 'no-cache');
     
     res.sendFile(resumePath, (err) => {
       if (err) {
