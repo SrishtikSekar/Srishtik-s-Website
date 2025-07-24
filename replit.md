@@ -32,12 +32,14 @@ Preferred communication style: Simple, everyday language.
 - **Components**: Comprehensive UI component library from shadcn/ui
 - **Hooks**: Custom hooks for mobile detection and toast notifications
 - **Styling**: Dark theme with navy color palette, responsive design
+- **Download Features**: Resume and project source code download buttons
 
 #### Backend Structure
-- **API Routes**: Resume download endpoint
+- **API Routes**: Resume download endpoint, project zip download endpoint
 - **Storage Layer**: Abstract storage interface with in-memory implementation
 - **Database Schema**: User management with Drizzle ORM
 - **Middleware**: Request logging, JSON parsing, error handling
+- **File Services**: Archiver for creating downloadable project zip files
 
 #### UI/UX Features
 - **Responsive Design**: Mobile-first approach with breakpoint-based layouts
@@ -67,6 +69,7 @@ Preferred communication style: Simple, everyday language.
 - **ORM**: Drizzle ORM for type-safe database operations
 - **Validation**: Zod schemas for runtime type checking
 - **Sessions**: PostgreSQL-backed session storage
+- **File Processing**: Archiver for zip file creation and download
 
 ### Deployment Strategy
 
