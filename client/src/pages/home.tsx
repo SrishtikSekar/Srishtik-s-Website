@@ -22,7 +22,6 @@ import {
   Users,
   Menu,
   X,
-  Archive,
   Eye
 } from "lucide-react";
 
@@ -59,15 +58,6 @@ export default function Home() {
     window.open('/api/resume/view', '_blank');
   };
 
-  const downloadProject = () => {
-    const link = document.createElement('a');
-    link.href = '/api/project/download';
-    link.download = 'G_Srishtik_Portfolio_Project.zip';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   return (
     <div className="min-h-screen bg-navy-900 text-navy-50">
       {/* Navigation */}
@@ -86,16 +76,10 @@ export default function Home() {
                 <button onClick={() => scrollToSection('projects')} className="text-navy-300 hover:text-primary transition-colors duration-300">Projects</button>
                 <button onClick={() => scrollToSection('skills')} className="text-navy-300 hover:text-primary transition-colors duration-300">Skills</button>
                 <button onClick={() => scrollToSection('contact')} className="text-navy-300 hover:text-primary transition-colors duration-300">Contact</button>
-                <div className="flex space-x-4">
-                  <Button onClick={viewResume} className="bg-primary hover:bg-primary/90 text-white">
-                    <Eye className="w-4 h-4 mr-2" />
-                    View Resume
-                  </Button>
-                  <Button onClick={downloadProject} variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">
-                    <Archive className="w-4 h-4 mr-2" />
-                    Project Files
-                  </Button>
-                </div>
+                <Button onClick={viewResume} className="bg-primary hover:bg-primary/90 text-white">
+                  <Eye className="w-4 h-4 mr-2" />
+                  View Resume
+                </Button>
               </div>
             </div>
 
@@ -127,16 +111,10 @@ export default function Home() {
               <button onClick={() => scrollToSection('projects')} className="block px-3 py-2 text-navy-300 hover:text-primary w-full text-left">Projects</button>
               <button onClick={() => scrollToSection('skills')} className="block px-3 py-2 text-navy-300 hover:text-primary w-full text-left">Skills</button>
               <button onClick={() => scrollToSection('contact')} className="block px-3 py-2 text-navy-300 hover:text-primary w-full text-left">Contact</button>
-              <div className="space-y-2">
-                <Button onClick={viewResume} className="block px-3 py-2 bg-primary text-white rounded-lg w-full">
-                  <Eye className="w-4 h-4 mr-2" />
-                  View Resume
-                </Button>
-                <Button onClick={downloadProject} variant="outline" className="block px-3 py-2 border-primary text-primary rounded-lg w-full">
-                  <Archive className="w-4 h-4 mr-2" />
-                  Project Files
-                </Button>
-              </div>
+              <Button onClick={viewResume} className="block px-3 py-2 bg-primary text-white rounded-lg mt-2 w-full">
+                <Eye className="w-4 h-4 mr-2" />
+                View Resume
+              </Button>
             </div>
           </motion.div>
         )}
@@ -171,10 +149,6 @@ export default function Home() {
               <Button onClick={viewResume} size="lg" className="bg-primary hover:bg-primary/90 text-white transform hover:scale-105 transition-all duration-300">
                 <Eye className="w-5 h-5 mr-2" />
                 View Resume
-              </Button>
-              <Button onClick={downloadProject} size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white transform hover:scale-105 transition-all duration-300">
-                <Archive className="w-5 h-5 mr-2" />
-                Download Project
               </Button>
               <Button 
                 onClick={() => scrollToSection('contact')} 
